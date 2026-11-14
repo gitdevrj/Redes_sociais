@@ -1,0 +1,114 @@
+# ============================================================
+# Identidade da marca — ajuste à vontade, sem mexer no código.
+# ============================================================
+nome: "Roberto Junior"            # nome exibido (ajuste se quiser usar o nome da empresa)
+handle_principal: "@robertojunior.up"
+segmento: "Finanças empresariais, consultoria e tecnologia para negócios"
+idioma: "pt-BR"
+fuso_horario: "America/Sao_Paulo"
+
+publico_alvo: >-
+  Empresários e empresárias, donos de PMEs, gestores e profissionais que querem
+  entender os próprios números e tomar decisões melhores.
+
+# Promessa da marca — toda legenda deve entregar pelo menos um destes pilares.
+pilares:
+  - Clareza
+  - Direção
+  - Lucro
+  - Segurança
+
+# Temas de conteúdo. As palavras-chave ajudam a classificar o post e escolher hashtags de nicho.
+temas:
+  financas_empresariais:
+    rotulo: "Finanças empresariais"
+    palavras_chave: [fluxo de caixa, capital de giro, margem, DRE, precificação, custo, despesa, faturamento, lucro, ponto de equilíbrio]
+    hashtags: ["#financasempresariais", "#gestaofinanceira", "#fluxodecaixa", "#capitaldegiro"]
+  financas_pessoais:
+    rotulo: "Finanças pessoais"
+    palavras_chave: [orçamento, dívida, reserva de emergência, pró-labore, salário, gastos, educação financeira]
+    hashtags: ["#financaspessoais", "#educacaofinanceira", "#reservadeemergencia"]
+  economia:
+    rotulo: "Economia"
+    palavras_chave: [selic, juros, inflação, ipca, dólar, pib, copom, câmbio, economia]
+    hashtags: ["#economia", "#selic", "#inflacao", "#economiabrasileira"]
+  investimentos:
+    rotulo: "Investimentos"
+    palavras_chave: [investimento, renda fixa, cdb, tesouro, ações, dividendos, carteira, rentabilidade]
+    hashtags: ["#investimentos", "#rendafixa", "#educacaofinanceira"]
+    disclaimer: "Conteúdo educativo. Não é recomendação de investimento."
+  consorcios:
+    rotulo: "Consórcios"
+    palavras_chave: [consórcio, carta de crédito, contemplação, lance, alavancagem patrimonial]
+    hashtags: ["#consorcio", "#cartadecredito", "#planejamentopatrimonial"]
+    disclaimer: "Conteúdo educativo. Contemplação não é garantida; leia o regulamento do grupo."
+  indicadores:
+    rotulo: "Indicadores financeiros"
+    palavras_chave: [indicador, kpi, ebitda, roi, margem de contribuição, ticket médio, cac, ltv, liquidez, endividamento]
+    hashtags: ["#indicadoresfinanceiros", "#kpi", "#ebitda", "#gestaodenegocios"]
+  dashboards_bi:
+    rotulo: "Dashboards e Business Intelligence"
+    palavras_chave: [dashboard, power bi, bi, business intelligence, painel, relatório, dados, gráfico, métricas]
+    hashtags: ["#businessintelligence", "#dashboard", "#powerbi", "#dadosparadecisao"]
+  ia_ferramentas:
+    rotulo: "Ferramentas de IA"
+    palavras_chave: [inteligência artificial, ia, chatgpt, claude, automação, agente, prompt, produtividade]
+    hashtags: ["#inteligenciaartificial", "#ianosnegocios", "#automacao", "#produtividade"]
+  comportamento:
+    rotulo: "Comportamento humano"
+    palavras_chave: [comportamento, hábito, mentalidade, decisão, viés, emoção, disciplina, liderança]
+    hashtags: ["#comportamento", "#mentalidade", "#lideranca", "#tomadadedecisao"]
+  quantica:
+    rotulo: "Mecânica e física quântica na vida e nos negócios"
+    palavras_chave: [quântica, quântico, física quântica, mecânica quântica, efeito observador, princípio da incerteza, superposição, entrelaçamento]
+    hashtags: ["#fisicaquantica", "#mentalidadeempreendedora", "#reflexao"]
+    # Diretriz de responsabilidade: usar a física como METÁFORA / analogia.
+    diretriz: >-
+      Use conceitos de física e mecânica quântica como metáfora ou analogia para decisões,
+      incerteza e gestão. Não afirme efeitos científicos não comprovados (ex.: "a física quântica
+      prova que você atrai dinheiro").
+
+tom_de_voz:
+  descricao: "Profissional, próximo e didático. Explica o complexo de forma simples, sem jargão excessivo."
+  faca:
+    - Abrir com um gancho forte na primeira linha (pergunta, dado ou contraste).
+    - Usar exemplos práticos do dia a dia de quem tem empresa.
+    - Traduzir termos técnicos na primeira vez em que aparecem.
+    - Terminar com um próximo passo claro (CTA).
+  evite:
+    - Promessas de ganho, enriquecimento rápido ou resultados garantidos.
+    - Sensacionalismo e alarmismo sobre economia.
+    - Excesso de emojis (no máximo 3 no Instagram/Facebook, 0–1 no LinkedIn).
+
+palavras_proibidas:
+  - "lucro garantido"
+  - "rentabilidade garantida"
+  - "ganho garantido"
+  - "fique rico"
+  - "enriqueça rápido"
+  - "dinheiro fácil"
+  - "sem risco"
+  - "renda passiva fácil"
+  - "segredo que ninguém conta"
+  - "milagre"
+
+cta_padrao: "Siga @robertojunior.up para ter mais clareza nos seus números."
+cta_alternativos:
+  - "Salve este post para consultar depois."
+  - "Compartilhe com um sócio ou gestor que precisa ver isso."
+  - "Comente sua dúvida que eu respondo."
+
+hashtags_marca: ["#robertojuniorup"]
+
+# Publicidade / parceria paga
+publicidade:
+  aviso_padrao: "#publi"
+
+# Identidade visual (usada nas legendas queimadas e capas — Fase 2)
+visual:
+  fonte: "Montserrat"
+  fonte_arquivo: ""            # caminho opcional para .ttf
+  cor_primaria: "#0B2545"
+  cor_secundaria: "#13315C"
+  cor_destaque: "#F2C14E"
+  cor_texto: "#FFFFFF"

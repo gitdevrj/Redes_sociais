@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h2>Fila de aprovação</h2>
+  <p class="muted"><a href="/?filtro=pendentes">Pendentes</a> · <a href="/?filtro=todos">Todos</a></p>
+  {% if not posts %}<p>Nenhum post aqui. Envie arquivos para a pasta <code>inbox/</code> ou para o bot do Telegram.</p>
+  {% else %}
+  <table>
+    <tr><th></th><th>ID</th><th>Tipo</th><th>Origem</th><th>Status</th><th>Confiança</th><th>Revisão</th><th>Criado</th></tr>
+    {% for p in posts %}
+    <tr>
+      <td>{% if p.tipo != 'video' %}<img class="thumb" src="/media/{{ p.id }}/{{ p.arquivos[0] }}" alt="">{% else %}🎬{% endif %}</td>
+      <td><a href="/post/{{ p.id }}">{{ p.id }}</a></td>
+      <td>{{ p.tipo }}</td><td>{{ p.origem }}</td>
+      <td><span class="badge b-{{ p.status }}">{{ p.status }}</span></td>
+      <td>{{ p.confianca if p.confianca is not none else '—' }}</td>
+      <td>{{ 'obrigatória' if p.revisao_obrigatoria else 'opcional' }}</td>
+      <td class="muted">{{ p.criado_em|local_dt|replace('T',' ') }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}Post {{ post.id }} — AutoPost{% endblock %}
+{% block content %}
+{% if msg %}<div class="msg">{{ msg }}</div>{% endif %}
+<div class="card">
+  <h2>Post <code>{{ post.id }}</code> <span class="badge b-{{ post.status }}">{{ post.status }}</span></h2>
+  <p class="muted">Tipo: {{ post.tipo }} · Origem: {{ post.origem }} · Confiança: {{ post.confianca if post.confianca is not none else '—' }}/100
+  {% if post.is_sponsored %} · <b>Parceria paga</b>{% endif %}</p>
+  {% if post.briefing %}<p><b>Briefing:</b> {{ post.briefing }}</p>{% endif %}
+  {% if post.erro %}<div class="alert risk">Erro: {{ post.erro }}</div>{% endif %}
+  {% if analysis %}
+    {% for r in analysis.riscos %}<div class="alert risk">⚠️ Risco: {{ r }}</div>{% endfor %}
+    <details><summary>Análise do conteúdo ({{ analysis.modo_ia }})</summary>
+      <p>{{ analysis.visao.descricao }}</p>
+      <p class="muted">Tema: {{ analysis.visao.tema_principal }} · Tom: {{ analysis.visao.tom_emocional }} · Pilares: {{ analysis.pilares|join(', ') }}</p>
+      {% if analysis.audio and analysis.audio.transcricao %}<pre>{{ analysis.audio.transcricao }}</pre>
+      {% elif analysis.audio %}<p class="muted">Sem transcrição: {{ analysis.audio.motivo_sem_transcricao }}</p>{% endif %}
+    </details>
+  {% endif %}
+</div>
+
+<form method="post" action="/post/{{ post.id }}/acao">
+<input type="hidden" name="csrf" value="{{ csrf }}">
+{% for pp in redes %}
+{% set st = estado.get(pp.rede) %}
+<div class="card">
+  <h2>{{ pp.rede|capitalize }} <span class="badge">{{ pp.formato }}</span>
+    {% if st %}<span class="badge b-{{ st.status }}">{{ st.status }}</span>{% endif %}
+    <span class="badge">confiança {{ pp.confianca.nota }}</span>
+    {% if pp.revisao_obrigatoria %}<span class="badge b-erro">revisão obrigatória</span>{% endif %}</h2>
+  <input type="hidden" name="{{ pp.rede }}_ativo_form" value="1">
+  <label><input type="checkbox" name="{{ pp.rede }}_ativo" value="1" {% if not st or st.status != 'descartado' %}checked{% endif %}> publicar nesta rede</label>
+  <div class="grid">
+    <div class="media">
+      {% if analysis and analysis.video %}
+        <video src="/media/{{ post.id }}/{{ post.arquivos[0] }}" controls preload="metadata"{% if analysis.video.frames %} poster="/media/{{ post.id }}/{{ analysis.video.frames[analysis.video.frames|length // 2] }}"{% endif %}></video>
+      {% else %}
+        {% for f in post.arquivos %}<img src="/media/{{ post.id }}/{{ f }}" alt="{{ pp.texto_alternativo[loop.index0] if pp.texto_alternativo|length > loop.index0 else '' }}">{% endfor %}
+      {% endif %}
+      <p class="muted">{{ pp.confianca.justificativa }}</p>
+      {% for a in pp.alertas %}<div class="alert">{{ a }}</div>{% endfor %}
+      <h3>Música</h3><p class="muted">Seleção e mixagem de trilha entram na Fase 2.</p>
+    </div>
+    <div>
+      {% if pp.rede == 'youtube' %}
+        <h3>Título</h3><input type="text" name="youtube_titulo" value="{{ pp.titulo }}" maxlength="100">
+      {% endif %}
+      <h3>Legenda (escolha uma e edite)</h3>
+      {% for leg in pp.legendas %}
+      <div class="var">
+        <label><input type="radio" name="{{ pp.rede }}_escolhida" value="{{ loop.index0 }}" {% if loop.index0 == pp.legenda_escolhida %}checked{% endif %}> {{ leg.estilo }}</label>
+        <span class="muted">({{ leg.texto|length }} caracteres)</span>
+        <textarea name="{{ pp.rede }}_legenda_{{ loop.index0 }}">{{ leg.texto }}</textarea>
+      </div>
+      {% endfor %}
+      <h3>Hashtags</h3><input type="text" name="{{ pp.rede }}_hashtags" value="{{ pp.hashtags|join(' ') }}">
+      <h3>Marcações</h3>
+      <input type="hidden" name="{{ pp.rede }}_mencoes_form" value="1">
+      {% for m in pp.marcacoes %}
+        <label><input type="checkbox" name="{{ pp.rede }}_mencao__{{ m.handle }}" checked> {{ m.handle }} — {{ m.nome }} <span class="muted">({{ m.evidencia }})</span></label><br>
+      {% else %}<p class="muted">Nenhuma marcação automática.</p>{% endfor %}
+      {% if pp.colaboradores %}<p class="muted">Colaboradores (Instagram): {{ pp.colaboradores|join(', ') }}</p>{% endif %}
+      {% if pp.marcacoes_sugeridas %}
+        <p class="muted"><b>Sugestões (não serão marcadas)</b> — para marcar, cadastre em <code>config/mentions.yaml</code>:</p>
+        <ul>{% for m in pp.marcacoes_sugeridas %}<li>{{ m.handle or m.nome }} <span class="muted">— {{ m.evidencia }}</span></li>{% endfor %}</ul>
+      {% endif %}
+      {% if pp.localizacao %}<p>📍 {{ pp.localizacao.nome }}</p>{% endif %}
+      {% if pp.rede in ['instagram','facebook','linkedin','youtube'] %}
+        <h3>Primeiro comentário (opcional)</h3><input type="text" name="{{ pp.rede }}_primeiro_comentario" value="{{ pp.primeiro_comentario }}">
+      {% endif %}
+      {% if pp.texto_alternativo %}<h3>Texto alternativo</h3><ul>{% for t in pp.texto_alternativo %}<li class="muted">{{ t }}</li>{% endfor %}</ul>{% endif %}
+      <h3>Horário</h3><input type="datetime-local" name="{{ pp.rede }}_horario" value="{{ (st.horario if st and st.horario else pp.horario_sugerido)|local_dt }}">
+      <details><summary>Prévia do texto final</summary><pre>{{ pp.legenda_final() }}</pre></details>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<div class="card">
+  <div class="btns">
+    <button name="op" value="salvar">💾 Salvar edições</button>
+    <button class="b-ok" name="op" value="aprovar">✅ Aprovar (agendar)</button>
+    <button class="b-pri" name="op" value="publicar_agora">🚀 Aprovar e publicar agora</button>
+    <button name="op" value="reagendar">🕒 Reagendar</button>
+    <button class="b-bad" name="op" value="descartar" onclick="return confirm('Descartar este post?')">🗑 Descartar</button>
+  </div>
+  <h3>Regenerar</h3>
+  <input type="text" name="instrucao" placeholder='Instrução livre, ex.: "mais curto", "foco em MEI", "tom mais leve"'>
+  <div class="btns"><button name="op" value="regenerar">🔁 Regenerar legendas</button></div>
+</div>
+</form>
+
+<div class="card"><details><summary>Histórico</summary><ul>
+{% for e in eventos %}<li class="muted">{{ e.criado_em|local_dt|replace('T',' ') }} — {{ e.tipo }} {{ e.detalhe }}</li>{% endfor %}
+</ul></details></div>
+{% endblock %}

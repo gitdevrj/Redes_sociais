@@ -1,0 +1,1 @@
+Dashboard real (dados fictícios) mostrando a margem de contribuição de uma PME no 1º semestre. Quero explicar o que é margem de contribuição e por que ela importa mais que o faturamento.

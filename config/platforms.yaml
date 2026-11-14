@@ -1,0 +1,71 @@
+# ============================================================
+# Redes, formatos e limites. Limites confirmados em docs/APIS.md (consulta 2026-11-14).
+# ============================================================
+instagram:
+  ativo: true
+  conta: "@robertojunior.up"
+  api: "instagram_api_facebook_login"   # necessário p/ Audio API, parceria paga e upload resumível
+  formatos_video: ["reels"]
+  formatos_imagem: ["feed", "carrossel"]
+  proporcao_video: "9:16"
+  proporcao_imagem: "4:5"
+  legenda_max_caracteres: 2200
+  hashtags_max_api: 30
+  hashtags_min: 3
+  hashtags_max: 8
+  mencoes_max: 20
+  colaboradores_max: 3
+  carrossel_max_itens: 20
+  posts_por_24h: 50                    # doc cita 100 (geral) e 50 (seção carrossel): usamos o menor
+  emojis_max: 3
+  imagem_formato: "jpeg"               # a API só aceita JPEG
+facebook:
+  ativo: true
+  conta: ""                            # nome da Página
+  formatos_video: ["reels", "video"]
+  formatos_imagem: ["foto", "album"]
+  proporcao_video: "9:16"
+  proporcao_imagem: "4:5"
+  legenda_max_caracteres: 5000         # limite prático do sistema (a Página aceita mais)
+  hashtags_min: 0
+  hashtags_max: 3
+  emojis_max: 3
+linkedin:
+  ativo: true
+  conta: "perfil pessoal"
+  autor: "pessoa"                      # pessoa (w_member_social) | organizacao
+  formatos_video: ["video"]
+  formatos_imagem: ["imagem", "multi_imagem"]
+  proporcao_video: "1:1"
+  proporcao_imagem: "1:1"
+  legenda_max_caracteres: 3000
+  hashtags_min: 3
+  hashtags_max: 5
+  emojis_max: 1
+tiktok:
+  ativo: false
+  legenda_max_caracteres: 2200
+  hashtags_min: 3
+  hashtags_max: 5
+  emojis_max: 3
+youtube:
+  ativo: true
+  conta: ""                            # nome/handle do canal
+  formatos_video: ["shorts", "video"]  # vertical <= 3 min vira Shorts; horizontal vira vídeo normal
+  formatos_imagem: []                  # YouTube não publica imagens soltas via API
+  proporcao_video: "9:16"
+  titulo_max_caracteres: 100
+  legenda_max_caracteres: 5000         # descrição
+  hashtags_min: 3
+  hashtags_max: 3
+  emojis_max: 2
+  categoria_id: "27"                   # 27 = Education (confira a lista da sua região)
+  privacidade_padrao: "private"        # private | unlisted | public — comece privado e libere após revisar
+  feito_para_criancas: false
+
+# Locais conhecidos (para preencher location_id quando a IA reconhecer o local)
+locais:
+  # - nome: "Escritório"
+  #   palavras_chave: ["escritório", "sala de reunião"]
+  #   instagram_location_id: ""
+  #   facebook_place_id: ""

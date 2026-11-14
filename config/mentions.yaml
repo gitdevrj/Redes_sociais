@@ -1,0 +1,38 @@
+# ============================================================
+# Marcações autorizadas (@). O sistema NUNCA inventa @.
+# Só marca automaticamente quem estiver nesta lista com "auto_marcar: true".
+# Qualquer outra pessoa/marca detectada vira apenas SUGESTÃO no painel.
+#
+# LGPD: "consentimento_imagem: true" é obrigatório para que a pessoa seja
+# marcada com base na presença dela no vídeo/foto. Sem consentimento registrado,
+# a marcação só pode vir de palavra-chave (nome citado no briefing/fala/texto).
+# O sistema NÃO faz reconhecimento facial.
+# ============================================================
+perfis:
+  - id: roberto_junior
+    nome: "Roberto Junior"
+    tipo: proprio              # proprio | parceiro | cliente | colaborador | fornecedor
+    handles:
+      instagram: "@robertojunior.up"
+      facebook: ""
+      linkedin: ""             # URN, ex.: urn:li:person:XXXX (preencher na Fase 3)
+    palavras_chave: []
+    logos: []
+    consentimento_imagem: true
+    consentimento_registrado_em: "2026-11-14"
+    auto_marcar: false         # é o próprio perfil: não precisa marcar
+
+  # Exemplo de parceiro (descomente e ajuste):
+  # - id: parceiro_exemplo
+  #   nome: "Empresa Parceira Ltda"
+  #   tipo: parceiro
+  #   handles:
+  #     instagram: "@empresaparceira"
+  #     facebook: "@empresaparceira"
+  #     linkedin: "urn:li:organization:0000000"
+  #   palavras_chave: ["empresa parceira", "parceira ltda"]
+  #   logos: ["Empresa Parceira"]
+  #   consentimento_imagem: false
+  #   consentimento_registrado_em: ""
+  #   auto_marcar: true
+  #   colaborador_instagram: false   # true = convidar como colaborador (até 3 por post)

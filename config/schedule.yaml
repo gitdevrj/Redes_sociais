@@ -1,0 +1,45 @@
+# ============================================================
+# Janelas de postagem (horário de Brasília). Dias: seg ter qua qui sex sab dom
+# Depois de 30 dias de métricas, a Fase 4 passa a priorizar os horários com melhor desempenho.
+# ============================================================
+fuso_horario: "America/Sao_Paulo"
+espacamento_entre_redes_min: 20        # evita publicar o mesmo conteúdo em todas as redes no mesmo minuto
+antecedencia_minima_min: 30            # não sugerir horários muito próximos de agora
+modo:
+  auto_publish: false                  # NUNCA publica sem aprovação, a menos que você ative
+  confianca_minima_auto: 85            # e mesmo assim só acima desta nota
+janelas:
+  instagram:
+    seg: ["12:00-13:30", "18:30-20:30"]
+    ter: ["12:00-13:30", "18:30-20:30"]
+    qua: ["12:00-13:30", "18:30-20:30"]
+    qui: ["12:00-13:30", "18:30-20:30"]
+    sex: ["12:00-13:30", "18:00-19:30"]
+    sab: ["10:00-12:00"]
+    dom: ["18:00-20:00"]
+  facebook:
+    seg: ["12:00-13:30", "19:00-21:00"]
+    ter: ["12:00-13:30", "19:00-21:00"]
+    qua: ["12:00-13:30", "19:00-21:00"]
+    qui: ["12:00-13:30", "19:00-21:00"]
+    sex: ["12:00-13:30"]
+    sab: ["10:00-12:00"]
+    dom: []
+  linkedin:
+    seg: ["07:30-09:00", "12:00-13:00"]
+    ter: ["07:30-09:00", "12:00-13:00", "17:30-18:30"]
+    qua: ["07:30-09:00", "12:00-13:00", "17:30-18:30"]
+    qui: ["07:30-09:00", "12:00-13:00"]
+    sex: ["07:30-09:00"]
+    sab: []
+    dom: []
+  youtube:
+    seg: ["12:00-13:00", "19:00-21:00"]
+    ter: ["12:00-13:00", "19:00-21:00"]
+    qua: ["12:00-13:00", "19:00-21:00"]
+    qui: ["12:00-13:00", "19:00-21:00"]
+    sex: ["18:00-20:00"]
+    sab: ["10:00-12:00"]
+    dom: ["10:00-12:00", "18:00-20:00"]
+frequencia:
+  max_posts_por_dia_por_rede: 2

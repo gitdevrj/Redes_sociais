@@ -1,0 +1,23 @@
+# ============================================================
+# Biblioteca de músicas LICENCIADAS (usada na Fase 2).
+# Coloque os arquivos de áudio nesta pasta e descreva cada faixa abaixo.
+# Fontes sugeridas (gratuitas, uso comercial permitido — confira a licença de CADA faixa):
+#   - YouTube Audio Library (studio.youtube.com → Biblioteca de áudio): veja se exige atribuição.
+#   - Pixabay Music (pixabay.com/music): licença Pixabay.
+# Nunca use músicas baixadas de fontes sem licença.
+# ============================================================
+faixas:
+  # - arquivo: "pixabay_corporate_motivation.mp3"
+  #   titulo: "Corporate Motivation"
+  #   artista: "NomeDoArtista"
+  #   fonte: "Pixabay Music"
+  #   url_origem: "https://pixabay.com/music/..."
+  #   licenca: "Pixabay Content License"
+  #   uso_comercial: true
+  #   exige_atribuicao: false
+  #   atribuicao: ""
+  #   mood: [inspirador, confiante]        # inspirador | didatico | serio | descontraido | urgente | reflexivo
+  #   energia: media                        # baixa | media | alta
+  #   bpm: 110
+  #   genero: corporate
+  #   duracao_s: 142
